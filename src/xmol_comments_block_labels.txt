@@ -1,0 +1,17 @@
+1 None gdb9_string  # These top two properties are appended to the
+2 None id_num       # ids field instead of the properties field
+3 GHz Rotational_constant_A
+4 GHz Rotational_constant_B
+5 GHz Rotational_constant_C
+6 D Dipole_moment
+7 a_0^3 Isotropic_polarizability
+8 Ha  Energy_of_HOMO
+9 Ha  Energy_of_LUMO
+10 Ha  E_Gap
+11 a_0^2 Electronic_spatial_extent
+12  Ha  Zero_point_vibrational_energy
+13  Ha  Internal_energy_at_0_K
+14  Ha  Internal_energy_at_298.15_K
+15  Ha  Enthalpy_at_298.15_K
+16  Ha  Free_energy_at_298.15_K
+17  cal/mol/K Heat_capacity_at_298.15_K
