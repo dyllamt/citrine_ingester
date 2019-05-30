@@ -41,9 +41,9 @@ class XMolAtomicSystem(ChemicalSystem):
         """
         uid = uuid4().hex
 
-        chemical_formula = line[0]        # elemental string
-        position = line[1:4]              # position vector
-        mulliken_charge = float(line[4])  # scalar charge
+        chemical_formula = line[0]                # elemental string
+        position = [float(i) for i in line[1:4]]  # position vector
+        mulliken_charge = float(line[4])          # scalar charge
         return cls(
             uid=uid, chemical_formula=chemical_formula,
             properties=[{'name': 'position', 'units': 'Angstroms',
