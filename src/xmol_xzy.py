@@ -72,7 +72,7 @@ class XMolMolecularSystem(ChemicalSystem):
         properties (list of dict) Recored properties for the system.
 
     System Properties (see xmol_comments_block_labels.txt) plus:
-        vibrational_frequencies (list of float) Harmonic frequencies (in GHz).
+        vibrational_frequencies (list of float) Harmonic frequencies (in 1/cm).
     """
     @classmethod
     def from_file(cls, file):
@@ -106,8 +106,8 @@ class XMolMolecularSystem(ChemicalSystem):
                       properties]
 
         # moves id_num and gdb9_string to a list of ids
-        gdb = properties.pop(0)  # first list item
-        id_num = properties.pop(0)  # second list item
+        gdb = properties.pop(0)  # first list item is gdb9 string
+        id_num = properties.pop(0)  # second list item is id number
         ids = []
         for item in [gdb, id_num]:
             item.pop('units')  # Ids do not have the units field
@@ -156,7 +156,7 @@ class XMolMolecularSystem(ChemicalSystem):
         for i in range(n_atoms):  # next n_atom lines are element positions
             molecule.append(fh.readline().strip().split())
 
-        vibrations = [  # vibration frequencies
+        vibrations = [  # next line is vibration frequencies
             float(i) for i in fh.readline().strip().split()]
         smiles = fh.readline().strip().split()  # next line is smiles strings
         inchl = fh.readline().strip().split()  # next line is InChl strings
@@ -172,5 +172,7 @@ class XMolMolecularSystem(ChemicalSystem):
 
 
 if __name__ == '__main__':
+
     sys = XMolMolecularSystem.from_file('../data/dsgdb9nsd_133885.xyz')
-    print(pif.dumps(sys))
+    json = pif.dumps(sys)
+    print(json)
