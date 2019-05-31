@@ -3,7 +3,6 @@ import numpy as np
 from uuid import uuid4
 
 from pypif.obj import *
-from pypif import pif
 
 from pymatgen.core.composition import Composition
 
@@ -172,7 +171,7 @@ class XMolMolecularSystem(ChemicalSystem):
 
 
 if __name__ == '__main__':
-
+    from pypif import pif
     sys = XMolMolecularSystem.from_file('../data/dsgdb9nsd_133885.xyz')
-    json = pif.dumps(sys)
-    print(json)
+    print(sys)
+    print(pif.dumps(sys))
