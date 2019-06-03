@@ -158,7 +158,8 @@ if __name__ == '__main__':
     from xmolsystem import XMolMolecularSystem
 
     # loads a system
-    sys = [XMolMolecularSystem.from_file('../data/dsgdb9nsd_133885.xyz')]
+    sys = [XMolMolecularSystem.from_file(
+        '../data/data_files/dsgdb9nsd_133885.xyz')]
     print(sys)
 
     # loads the system into a DataFrame

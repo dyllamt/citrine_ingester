@@ -5,6 +5,7 @@ from uuid import uuid4
 from pypif.obj import *
 
 from pymatgen.core.composition import Composition
+from pymatgen.core.structure import Molecule
 
 
 """
@@ -73,6 +74,18 @@ class XMolMolecularSystem(ChemicalSystem):
     System Properties (see xmol_comments_block_labels.txt) plus:
         vibrational_frequencies (list of float) Harmonic frequencies (in 1/cm).
     """
+
+    def get_molecule(self):
+        """
+        Get the structure of the molecule as a pymatgen Molecule.
+        """
+        sub_systems = self.sub_systems
+        species = [i.chemical_formula for i in sub_systems]
+        coords = [i.position for i in sub_systems]
+        mulliken = [i.mulliken_charge for i in sub_systems]
+        return Molecule(
+            species, coords, site_properties={'mulliken_charges': mulliken})
+
     @classmethod
     def from_file(cls, file):
         """
@@ -172,6 +185,9 @@ class XMolMolecularSystem(ChemicalSystem):
 
 if __name__ == '__main__':
     from pypif import pif
-    sys = XMolMolecularSystem.from_file('../data/dsgdb9nsd_133885.xyz')
+
+    # loads system from a file
+    sys = XMolMolecularSystem.from_file(
+        '../data/data_files/dsgdb9nsd_133885.xyz')
     print(sys)
     print(pif.dumps(sys))
