@@ -41,9 +41,9 @@ class XMolAtomicSystem(ChemicalSystem):
         """
         uid = uuid4().hex
 
-        chemical_formula = line[0]                # elemental string
-        position = [float(i) for i in line[1:4]]  # position vector
-        mulliken_charge = float(line[4])          # scalar charge
+        chemical_formula = line[0]  # elemental string
+        position = [float(i) for i in line[1:4]]  # vector position
+        mulliken_charge = float(line[4])  # scalar charge
         return cls(
             uid=uid, chemical_formula=chemical_formula,
             properties=[{'name': 'position', 'units': 'Angstroms',
@@ -166,7 +166,7 @@ class XMolMolecularSystem(ChemicalSystem):
 
         molecule = []
         for i in range(n_atoms):  # next n_atom lines are element positions
-            molecule.append(fh.readline().strip().split())
+            molecule.append(fh.readline().strip().replace('*^', 'e').split())
 
         vibrations = [  # next line is vibration frequencies
             float(i) for i in fh.readline().strip().split()]
@@ -188,6 +188,6 @@ if __name__ == '__main__':
 
     # loads system from a file
     sys = XMolMolecularSystem.from_file(
-        '../data/data_files/dsgdb9nsd_133885.xyz')
+        '../data/data_subset/dsgdb9nsd_000116.xyz')
     print(sys)
     print(pif.dumps(sys))
