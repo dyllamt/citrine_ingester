@@ -159,7 +159,7 @@ if __name__ == '__main__':
 
     # loads a system
     sys = [XMolMolecularSystem.from_file(
-        '../data/data_subset/dsgdb9nsd_000116.xyz')]
+        '../../data/data_subset/dsgdb9nsd_000116.xyz')]
     print(sys)
 
     # loads the system into a DataFrame

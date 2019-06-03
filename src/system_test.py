@@ -1,3 +1,6 @@
+import sys
+sys.path.append('./base/')
+
 from glob import glob
 from pifframe import PifFrame
 from pypif import pif

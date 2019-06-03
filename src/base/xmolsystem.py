@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 
 from uuid import uuid4
@@ -12,9 +14,10 @@ from pymatgen.core.structure import Molecule
 This module defines methods for extracting ChemicalSystems from XMol XYZ files.
 """
 
+PWD = os.path.dirname(os.path.realpath(__file__))
 
 COMMENTS_BLOCK_LABELS = np.loadtxt(
-    'xmol_comments_block_labels.txt', dtype=str)[:, 1:]
+    PWD + '/xmol_comments_block_labels.txt', dtype=str)[:, 1:]
 # units and names for the properties in the comments block
 
 
@@ -188,6 +191,6 @@ if __name__ == '__main__':
 
     # loads system from a file
     sys = XMolMolecularSystem.from_file(
-        '../data/data_subset/dsgdb9nsd_000116.xyz')
+        '../../data/data_subset/dsgdb9nsd_000116.xyz')
     print(sys)
     print(pif.dumps(sys))
