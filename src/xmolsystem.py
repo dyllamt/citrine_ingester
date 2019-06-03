@@ -14,7 +14,7 @@ This module defines methods for extracting ChemicalSystems from XMol XYZ files.
 
 COMMENTS_BLOCK_LABELS = np.loadtxt(
     'xmol_comments_block_labels.txt', dtype=str)[:, 1:]
-# units and labels for the properties in the comments block
+# units and names for the properties in the comments block
 
 
 class XMolAtomicSystem(ChemicalSystem):
