@@ -7,6 +7,6 @@ The dataset can be analyzed by loading the System entries into a `PifFrame`, whi
 A subset of the QM9 dataset can be found in the **data** folder, and all base code and test stripts can be found in **src**.
 
 The `system_test.py` script demonstrates:
-1. How each molecular system can be loaded from files
-2. How `PifFrame` can be used to expose sub-systems
-3. How to write these systems to the PIF schema
+1. How each molecular system can be loaded from files.
+2. How `PifFrame` can be used to expose sub-systems.
+3. How to write systems to JSON files in the PIF schema.
